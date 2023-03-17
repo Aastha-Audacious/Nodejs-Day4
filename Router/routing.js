@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const {dashboard, login, register, services} = require('../Controller/controllers');
-const {auth_token} = require('../Middleware/middleware');
+const {donar, register, validate} = require('../Controller/controllers');
+const {queryValidation} = require('../Middleware/middleware');
 
-router.get("/dashboard", [auth_token] ,dashboard);
-router.get("/login",[auth_token], login);
-router.get("/register",[auth_token], register);
-router.get("/services", services);
+router.get("/login/:id", donar);
+router.get("/register",register);
+// router.get("/validate/:name/:contact",[queryValidation], validate);
+router.get("/validate",[queryValidation], validate);
+
+
 
 module.exports = router;
